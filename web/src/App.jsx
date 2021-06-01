@@ -1,31 +1,39 @@
 import React from 'react';
-import { Typography, AppBar, Card, CardActions, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core';
-import { Folder, FolderOpen, BugReport, FileCopy } from '@material-ui/icons'
-import FetchPath from './components/FetchPath';
+import { Typography, AppBar, CssBaseline } from '@material-ui/core';
+// import { Folder, FolderOpen, BugReport, FileCopy } from '@material-ui/icons'
+import FetchPath from './components/FetchPath.jsx';
+
+const styles = {
+    title: {
+      width: '100%',
+      margin: '20px',
+      color: 'white'
+    },
+    headText:{
+        color: 'white'
+    },
+    appBar:{
+        'padding-bottom': '5px',
+        'margin-bottom': '20px'
+    }
+  };
+  
+
 const App = () => {
     return (
         <>
             <CssBaseline />
-            <AppBar position="relative">
-                <Toolbar>
-                    
-                </Toolbar>
+            <AppBar position="relative" style={styles.appBar}>
+                <Typography style={styles.title} variant="h2" align="center" gutterBottom>
+                    GottaGoFinder
+                </Typography>
+                <Typography style={styles.headText}  variant="h6" align="center" color="textSecondary" gutterBottom>
+                  Make the finder great again
+                </Typography>
             </AppBar>
             <main>
                 <div>
-                    <Container maxWidth="sm">
-                        <Typography variant="h2" align="center" color="textPrimary" gutterBottom>
-                             GottaGoFinder
-                         </Typography>
-                         <Typography variant="h6" align="center" color="textSecondary" gutterBottom>
-                             Pas sur de savoir ou la searchbar s'en va
-                         </Typography>
-                    </Container>
-
-            <FetchPath >
-                
-            </FetchPath>
-
+                    <FetchPath />
                 </div>
             </main>
         </>
