@@ -17,7 +17,9 @@
 ```
 ## Description
 This is the first time I really work with Kotlin.
+
 This project is meant to work either by the CLI or the [front-end app](https://github.com/Damyyr/GottaGoFinder/tree/main/web)
+to provide a file finder.
 
 ## Modules
 ### CLI [:modules:cli]
@@ -26,8 +28,8 @@ GottaGoFinder provides a cli tool with the same features as the React app.
 #### Run it
 - make sure you have Java 11
 - run `./gradlew clean && ./gradlew build`
-- you can either use `java -jar modules/cli/build/libs/cli-0.0.1-SNAPSHOT.jar <--path>`
-- or `./GottaGoFinder.sh <--path>`
+- you can either use `java -jar modules/cli/build/libs/cli-0.0.1-SNAPSHOT.jar --help`
+- or `./GottaGoFinder.sh --help`
 
 ### Api [:modules:api]
 GottaGoFinder also provide an REST api to get the same result. You can use it with the front-end app in `cd web /`
