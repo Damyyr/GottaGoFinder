@@ -1,6 +1,6 @@
 @file:JvmName("MainKt")
 
-package info.mdamour.gottaGoFinder.cli
+package info.mdamour.gottaGoFinderCli
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
