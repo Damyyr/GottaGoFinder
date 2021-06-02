@@ -21,9 +21,7 @@ constructor(props) {
     }
 }
 
-async componentDidMount(){
-  console.log(this.props)
-  console.log(this.state)
+componentDidMount(){
   this.setState({ paths: this.props.fetchedPaths })
 }
 
@@ -60,6 +58,6 @@ async componentDidMount(){
           </TableFooter>
         </Table>
       </React.Fragment>
-      )
+    )
   }
 }
