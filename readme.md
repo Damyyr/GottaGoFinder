@@ -49,7 +49,7 @@ in the [web folder](https://github.com/Damyyr/GottaGoFinder/tree/main/web).
 - run `./gradlew bootRun`
 - application will listen on `localhost:8080`
 
-### Run tests
+#### Run tests
 
 - run `.gradlew check`
 
@@ -78,3 +78,4 @@ This occurs when the client (you) does not have the proper right to see or execu
 - Make a datasource layer to plug on real datasource and make unit tests easier
 - Add more test (for now I only tested core logic)
 - Use a gradle.properties to keep all the dependencies and plugin versions in the same file
+- Add more filter (i.e: show absolute path)
