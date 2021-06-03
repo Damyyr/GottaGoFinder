@@ -10,8 +10,6 @@ import info.mdamour.gottaGoFinder.helpers.ReadableUnitHelper
 import info.mdamour.gottaGoFinder.services.PathService
 
 class Cli : CliktCommand() {
-    private val service = PathService()
-
     private val path: String by option(help = "Path you want to walk through").required()
     private val showHidden by option("-a", "--all", help = "Show hidden files").flag(default = false)
     private val save by option("-s", "--save", help = "Save result in an index (coming soon)").flag(default = false)
@@ -22,7 +20,8 @@ class Cli : CliktCommand() {
     }
 
     override fun run() {
-        var paths = service.listPath(path, showHidden = showHidden)
+        val service = PathService(path)
+        var paths = service.listPath(showHidden = showHidden)
         var maxLength = (paths.maxByOrNull { it.path.length })?.path?.length
 
         paths.forEach() {

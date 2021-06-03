@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("api/paths")
-class PathController(private val service: PathService) {
+class PathController() {
 
     @CrossOrigin
     @GetMapping
@@ -16,7 +16,8 @@ class PathController(private val service: PathService) {
         @RequestParam(name = "showVisible", defaultValue = "true") showVisible: Boolean,
         @RequestParam(name = "showHidden", defaultValue = "false") showHidden: Boolean
     ): Collection<Path> {
-        return service.listPath(path, showVisible, showHidden)
+        val service = PathService(path)
+        return service.listPath(showVisible, showHidden)
     }
 
 }

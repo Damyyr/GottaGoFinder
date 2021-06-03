@@ -12,22 +12,21 @@ const val DEFAULT_PATH = "./"
 val SDF: SimpleDateFormat = SimpleDateFormat("MM/dd/yyy HH:mm:ss")
 
 @Service
-class PathService {
+class PathService(private val path: String = DEFAULT_PATH) {
     fun listPath(
-        path: String = DEFAULT_PATH,
         showVisible: Boolean = true,
         showHidden: Boolean = false
     ): Collection<Path> {
         var paths = listOf<Path>()
 
         try {
-            File(path).listFiles()?.forEach {
+            fileClass().listFiles()?.forEach {
                 if (!it.isHidden && !showVisible) return@forEach
                 if (it.isHidden && !showHidden) return@forEach
 
                 try {
                     paths += Path(it.isDirectory, it.toString(), SDF.format(it.lastModified()), folderSize(it.toPath()))
-                } catch (e: Exception){
+                } catch (e: Exception) {
                     System.out.printf(
                         "\nAn error occurred during the file scanning. Please verify that you can access all of these files. \n%s\n\n",
                         e.message
@@ -46,7 +45,13 @@ class PathService {
         return paths.sortedBy { it.size }
     }
 
-    private fun folderSize(path: java.nio.file.Path): Long {
+    // There is an known issue with mockkConstructor which prevents to manipulate the File class in tests.
+    // Split the logic make it easier to test
+    // https://github.com/mockk/mockk/issues/117#issuecomment-593875539
+    fun fileClass(): File = File(path)
+
+    // public for testing
+    fun folderSize(path: java.nio.file.Path): Long {
         var size: Long = 0
 
         try {
@@ -64,6 +69,7 @@ class PathService {
             }
         } catch (e: IOException) {
             System.out.printf("IO errors %s", e)
+            return 0
         }
 
         return size
