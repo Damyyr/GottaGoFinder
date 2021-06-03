@@ -8,6 +8,8 @@
 #### Run it
 You can run it using `npm install && npm start`
 
+From here you can just type the path you want to visit, and either click `search` or press `enter`.
+
 ## Available Scripts
 
 In the project directory, you can run:
